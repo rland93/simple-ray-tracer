@@ -72,7 +72,8 @@ public:
     // Normalize
     Vec<T> normalize() const {
         T l = mag();
-        return Vec<T>(x / l, y / l, z / l);
+        T invl = float(1/l);
+        return Vec<T>(T(x * invl), T(y * invl), T(z * invl));
     }
     // Print
     friend std::ostream& operator<< (std::ostream &os, const Vec& u) {

@@ -12,6 +12,7 @@ struct Sphere
     float reflectivity;
     bool transparent;
     Color color;
+    Sphere() : center(), radius(), refractiveIndex(), reflectivity(), transparent(), color() {}
     Sphere(const Vecf center, const float radius, const float refractiveIndex, const float reflectivity, const bool transparent, const Color color) : center(center), radius(radius), refractiveIndex(refractiveIndex), reflectivity(reflectivity), transparent(transparent), color(color) {}
 
     bool collision(const Ray &incidentRay, float &hitDist, bool &insideSphere) const {
@@ -51,10 +52,9 @@ struct Sphere
 
     // return normal to surface
     Vecf find_normal(const Vecf &pSurf) {
-        Vecf r = pSurf - center;
+        Vecf r = (pSurf - center).normalize();
         // check that point is on surface
-        assert(r.mag2() == radius);
-        return r.normalize();
+        return r;
     }
 };
 #endif

@@ -66,7 +66,7 @@ struct Color
     }
     // Print
     friend std::ostream& operator<< (std::ostream &os, const Color& u) {
-        os << "[" << u.r << "," << u.g << "," << u.b << "]";
+        os << "[" << int(u.r) << "," << int(u.g) << "," << int(u.b) << "]";
         return os;
     }
 };
