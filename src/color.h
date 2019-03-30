@@ -1,6 +1,7 @@
 #ifndef COLOR
 #define COLOR
 #include <cstdint>
+#include <ostream>
 
 struct Color 
 {
@@ -62,6 +63,11 @@ struct Color
         else if (u < 0.0) x = 0.0;
         else x = u;
         return Color(uint8_t(r * x), uint8_t(g * x), uint8_t(b * x));
+    }
+    // Print
+    friend std::ostream& operator<< (std::ostream &os, const Color& u) {
+        os << "[" << u.r << "," << u.g << "," << u.b << "]";
+        return os;
     }
 };
 #endif

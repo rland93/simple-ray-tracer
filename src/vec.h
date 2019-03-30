@@ -1,6 +1,7 @@
 #ifndef VEC
 #define VEC
 #include <ostream>
+#include <cmath>
 template<typename T>
 /* A vector with 3 components.*/
 class Vec {
